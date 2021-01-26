@@ -12,23 +12,19 @@
     <!-- CARDS -->
     <div class="row mt-5">
       {% for tour in tours %}
-      {% set random_tour = range(1,17)|random %}
       <div class="col-4">
         <div class="card mb-4">
           <div class="embed-responsive embed-responsive-16by9">
-             <img class="card-img-top embed-responsive-item" src="{{ tours[random_tour].picture }}" width="300" height="200" alt="" />
+             <img class="card-img-top embed-responsive-item" src="{{ tours[tour].picture }}" width="300" height="200" alt="" />
           </div>
           <div class="card-body">
-            <h2 class="h5 card-title">{{ tours[random_tour].country }} {{ tours[random_tour].date }}: {{ tours[random_tour].title }} {{ tours[random_tour].stars }}★</h2>
-            <p class="card-text">{{ tours[random_tour].description|truncate(120) }}</p>
-            <p class="font-weight-bold d-inline">{{ tours[random_tour].nights }} ночей {{ tours[random_tour].price }}&#8381</p>
-            <a href="/tours/{{ random_tour }}/" class="btn btn-sm btn-primary d-inline float-right">Подробнее</a>
+            <h2 class="h5 card-title">{{ tours[tour].country }} {{ tours[tour].date }}: {{ tours[tour].title }} {{ tours[tour].stars }}★</h2>
+            <p class="card-text">{{ tours[tour].description|truncate(120) }}</p>
+            <p class="font-weight-bold d-inline">{{ tours[tour].nights }} ночей {{ tours[tour].price }}&#8381</p>
+            <a href="/tours/{{ tour }}/" class="btn btn-sm btn-primary d-inline float-right">Подробнее</a>
           </div>
         </div>
       </div>
-      {% if loop.index == 6 %}
-      {% break %}
-      {% endif %}
       {% endfor %}
     </div>
   </main>

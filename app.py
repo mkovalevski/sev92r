@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from data import departures, tours, title, subtitle, description, single_departures
+from random import randint
 
 app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
@@ -7,7 +8,23 @@ app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 @app.route('/')
 def index():
-    return render_template("index.html", title=title, tours=tours, departures=departures)
+    rand = []
+    new_tours = {}
+    b = 7
+    i = 0
+    while i <= b:
+        if len(rand) == 6:
+            break
+        random_id = randint(1, 16)
+        if random_id not in rand:
+            rand.append(random_id)
+        else:
+            b += 1
+        i += 1
+    print(rand)
+    for i in rand:
+        new_tours[i] = tours[i]
+    return render_template("index.html", title=title, tours=new_tours, departures=departures)
 
 
 @app.route('/departures/<departure>/')
@@ -30,7 +47,7 @@ def tour(id):
                            departures=departures, stars=int(tours[int(id)]["stars"]), title=title)
 
 
-#app.run('localhost', port=8000, debug=True)
+# app.run('localhost', port=8000, debug=True)
 
 if __name__ == '__main__':
     app.run()
