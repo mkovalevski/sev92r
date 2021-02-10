@@ -6,7 +6,6 @@
     <!-- CARDS -->
     <div class="row mt-5">
 {% for tour in tours %}
-    {% if tours[tour].departure == departure %}
       <div class="col-4">
         <div class="card mb-4">
           <img class="card-img-top " src="{{ tours[tour].picture }}" width="300" height="300"  alt="">
@@ -18,7 +17,6 @@
           </div>
         </div>
       </div>
-    {% endif %}
 {% endfor %}
   </div>
 </main>
