@@ -4,24 +4,21 @@
 {% block container %}
   <main class="container mt-3">
     <!-- HERO -->
-    <section class="jumbotron text-center mt-4" style="background: url('https://place-hold.it/1600x300'); background-position: center center">
-      <h1 class="display-4">Всякие туры</h1>
-      <p class="lead">{{ subtitle }}</p>
-      <p class="mt-5 w-50 mx-auto">Лучшие направления, где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами</p>
-    </section>
+    <img class="ml-5" src="../static/baner.png">
+
     <!-- CARDS -->
     <div class="row mt-5">
-      {% for tour in tours %}
+      {% for car in cars %}
       <div class="col-4">
         <div class="card mb-4">
           <div class="embed-responsive embed-responsive-16by9">
-             <img class="card-img-top embed-responsive-item" src="{{ tours[tour].picture }}" width="300" height="200" alt="" />
+             <img class="card-img-top embed-responsive-item" src="{{ cars[car].picture }}" width="300" height="200" alt="" />
           </div>
           <div class="card-body">
-            <h2 class="h5 card-title">{{ tours[tour].country }} {{ tours[tour].date }}: {{ tours[tour].title }} {{ tours[tour].stars }}★</h2>
-            <p class="card-text">{{ tours[tour].description|truncate(120) }}</p>
-            <p class="font-weight-bold d-inline">{{ tours[tour].nights }} ночей {{ tours[tour].price }}&#8381</p>
-            <a href="/tours/{{ tour }}/" class="btn btn-sm btn-primary d-inline float-right">Подробнее</a>
+            <h2 class="h5 card-title">{{ cars[car].title }}</h2>
+            {% for key, value in cars[car]['description'].items() %}
+            <p class="card-text">{{ cars[car]['description'][key] }}</p>
+            {% endfor %}
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (great-travel)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="sev92.rus" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
