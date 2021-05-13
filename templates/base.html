@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <meta name="description" content="Аренда автомобилей в Севастополе"/>
@@ -12,12 +13,38 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href='../static/index.css'/>
     <link rel="stylesheet" href='../static/site_global.css'/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
+ <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <style>
    body {
     background: url("../static/background2.png") no-repeat ;
     background-size: cover;
    }
+
+   a.button24 {
+       display: inline-block;
+       color: white;
+       text-decoration: none;
+       padding: .5em 2em;
+       outline: none;
+       border-width: 2px 0;
+       border-style: solid none;
+       border-color: #FDBE33 #000 #D77206;
+       border-radius: 6px;
+       background: linear-gradient(#F3AE0F, #E38916) #E38916;
+       transition: 0.2s;
+   }
+
+   a.button24:hover {
+       background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+   }
+
+   a.button24:active {
+       background: linear-gradient(#f59500, #f5ae00) #f59500;
+   }
+   html { overflow-x: hidden; }
   </style>
 <body>
 <header class="container mt-3">
@@ -30,10 +57,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Аренда автомобилей</a>
+                    <a class="button24 nav-link font-weight-bold" href="/apartments">Аренда апартаментов</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/apartments">Аренда апартаментов</a>
+                    <a class="nav-link" href="/">Аренда автомобилей</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/terms">Условия аренды</a>

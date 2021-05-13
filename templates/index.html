@@ -2,28 +2,85 @@
 
 
 {% block container %}
-  <main class="container mt-3">
-    <!-- HERO -->
-    <img class="ml-5" src="../static/baner.png">
+    <main class="container-sm mt-3">
+        <!-- HERO -->
+        <img class="ml-5" src="../static/baner.png">
 
-    <!-- CARDS -->
-    <div class="row mt-5">
-      {% for car in cars %}
-      <div class="col-4">
-        <div class="card mb-4">
-          <div class="embed-responsive embed-responsive-16by9">
-             <img class="card-img-top embed-responsive-item" src="{{ cars[car].picture }}" width="300" height="200" alt="" />
-          </div>
-          <div class="card-body">
-            <h2 class="h5 card-title">{{ cars[car].title }}</h2>
-            {% for key, value in cars[car]['description'].items() %}
-            <p class="card-text">{{ cars[car]['description'][key] }}</p>
+        <!-- CARDS -->
+        <div class="row mt-5">
+            {% for car in cars %}
+                <div class="col-4">
+                    <div class="card mb-5" style="">
+                        <div class="embed-responsive embed-responsive-4by3" style="height: 340px;">
+                            <img id="{{ car }}" class="card-img-top embed-responsive-item"
+                                 style="opacity: 100; filter: alpha(opacity=0);" src="{{ cars[car].picture }}" lang="../static/salon.png" alt=""/>
+                        </div>
+                        <div class="card-body">
+                            <h2 id="title" class="h5 card-title">{{ cars[car].title }}</h2>
+                            {% for key, value in cars[car]['description'].items() %}
+                                <p class="card-text">{{ cars[car]['description'][key] }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-          </div>
         </div>
-      </div>
-      {% endfor %}
-    </div>
-  </main>
+    </main>
+    <script>
+        let renoWhite = document.getElementById("1");
+        let renoOrange = document.getElementById("2");
+        renoWhite.src = '../static/RENO_KAPTUR_WHITE.png';
+        renoOrange.src = "../static/RENO_KAPTUR_OR.png";
+        let whiteArray = ["../static/salon.png", "../static/RENO_KAPTUR_WHITE.png"];
+        let orangeArray = ["../static/RENO_KAPTUR_OR.png", "../static/salon.png"];
+        let imageIndex = 0;
+        let opacity = 100;
+        let timeout;
+
+        function changeImage() {
+            opacity--;
+            if (imageIndex >= 2) {
+                imageIndex = 0;
+            }
+            renoWhite.src = whiteArray[imageIndex];
+            renoOrange.src = orangeArray[imageIndex];
+
+            imageIndex++;
+        }
+
+        function mF(x, img1) {
+
+            if (!this.dir) {
+                this.dir = -1;
+                this.ops = 99;
+                this.count = 100 + x;
+                this.obj = img1;
+                if ('v' == '\v') this.obj.style.filter = 'alpha(opacity=' + this.ops + ')';
+                else this.obj.style.opacity = this.ops;
+                TMR1 = setTimeout('mF (1, renoWhite)', 10);
+            } else {
+                clearTimeout(TMR1);
+                if (this.ops > 0 && this.ops < 100) {
+                    this.ops += this.dir;
+                    if ('v' === '\v') this.obj.style.filter = 'alpha(opacity=' + this.ops + ')';
+                    else this.obj.style.opacity = .05 * this.ops;
+                } else {
+                    if (!this.ops) {
+                        let t = this.obj.lang;
+                        this.obj.lang = this.obj.src;
+                        this.obj.src = t;
+                    }
+                    this.dir *= -1;
+                    this.ops += this.dir;
+                }
+                if (this.count !== this.ops){
+                    TMR1 = setTimeout('mF (1, renoWhite)', 20);
+                }
+            }
+        }
+
+
+    </script>
 {% endblock %}
+
 
